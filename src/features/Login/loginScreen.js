@@ -4,7 +4,7 @@ import { View, Text } from 'react-native'
 export default function LoginScreen( {navigation} ) {
     return (
         <View>
-            <Text>LoginScreen</Text>
+            <Text>LoginScreen by fast</Text>
         </View>
     );
 }
