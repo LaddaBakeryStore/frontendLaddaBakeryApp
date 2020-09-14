@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { View, Text, TextInput, StyleSheet, Image} from 'react-native'
 import CustomBottom from '../../components/customBottom'
+import TextButton from '../../components/textButton'
 
 export default function LoginScreen( {navigation} ) {
     const [text, setText] = React.useState('');
@@ -24,10 +25,10 @@ export default function LoginScreen( {navigation} ) {
                 style={styles.textInputBox}
                 onChangeText={text => setText(text)}/>        
             </View>
-            <Text style={{flex: 0.1}}>Sign UP</Text>
+            <TextButton title="Sign UP" navigation={navigation} routeName="RegisterScreen" />
         </View>
         <View style={{flex: 1}}>
-            <CustomBottom />
+            <CustomBottom title="Login" navigation={navigation} routeName="HomeScreen" />
         </View>
 
     

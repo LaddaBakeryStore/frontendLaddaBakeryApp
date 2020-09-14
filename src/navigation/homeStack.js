@@ -4,6 +4,7 @@ import { createAppContainer } from 'react-navigation';
 import HomeScreen from '../features/Home/homeScreen';
 import HomeHeader from '../features/Home/homeHeader'
 import LoginScreen from '../features/Login/loginScreen';
+import RegisterScreen from '../features/Register/registerScreen';
 
 const screens = {
     HomeScreen: {
@@ -16,6 +17,9 @@ const screens = {
     },
     LoginScreen: {
         screen: LoginScreen,
+    },
+    RegisterScreen: {
+        screen: RegisterScreen,
     }
 }
 

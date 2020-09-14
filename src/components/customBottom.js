@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { 
     View,
     StyleSheet,
@@ -6,16 +6,22 @@ import {
     Text
 } from 'react-native'
 
-export default function ImageButton( {title, navigation, routeName} ){
-    return (
-        <View style={styles.container}>
-            <TouchableOpacity style={styles.loginBox}>
-                <Text>
-                    Login
-                </Text>
-            </TouchableOpacity>
-        </View>
-    )
+class CustomButton extends Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        const { title ,navigation, routeName } = this.props;
+        return (
+            <View style={styles.container}> 
+                <TouchableOpacity style={styles.loginBox} onPress={() => navigation.navigate( {routeName} )}>
+                    <Text>
+                        { title }
+                    </Text>
+                </TouchableOpacity>
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
@@ -36,3 +42,6 @@ const styles = StyleSheet.create({
     }
     
 });
+
+
+export default CustomButton;

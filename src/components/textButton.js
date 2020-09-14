@@ -3,10 +3,10 @@ import {
     View,
     StyleSheet,
     TouchableOpacity,
-    Image
+    Text
 } from 'react-native'
 
-class ImageButton extends Component {
+class TextButton extends Component {
     constructor(props){
         super(props)
     }
@@ -15,7 +15,9 @@ class ImageButton extends Component {
         return (
             <View style={styles.container}>
                 <TouchableOpacity onPress={() => navigation.navigate( {routeName} )}>
-                    <Image source={require('../assets/profile.png')} style={{width: 48, height: 48}}/>
+                    <Text>
+                        { title }
+                    </Text>                    
                 </TouchableOpacity>
             </View>
         )
@@ -30,4 +32,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ImageButton;
+export default TextButton;
