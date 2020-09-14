@@ -11,11 +11,13 @@ class CustomButton extends Component {
         super(props);
     }
     render() {
-        const { title ,navigation, routeName } = this.props;
+        const { title ,navigation, routeName, style, fontStyle } = this.props;
+        const customStyles = StyleSheet.flatten([style]);
+        const fontStyles = StyleSheet.flatten([fontStyle]);
         return (
             <View style={styles.container}> 
-                <TouchableOpacity style={styles.loginBox} onPress={() => navigation.navigate( {routeName} )}>
-                    <Text>
+                <TouchableOpacity style={customStyles} onPress={() => navigation.navigate( {routeName} )}>
+                    <Text style={fontStyle}>
                         { title }
                     </Text>
                 </TouchableOpacity>
@@ -30,17 +32,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 10, 
     },
-    loginBox: {
-        borderRadius: 12,
-        backgroundColor: "#FFF",
-        width: "72%",
-        height: "55%",
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderColor: "#000",
-        borderWidth: 1
-    }
-    
 });
 
 

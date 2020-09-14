@@ -3,10 +3,34 @@ import {
   View,
   Text,
   Button,
-  StyleSheet 
+  StyleSheet,
+  FlatList,
+  SafeAreaView,
 } from 'react-native'
 import { SliderBox } from "react-native-image-slider-box"
 import CustomButton from "../../components/customBottom"
+import DiscountCard from '../../components/discountCard';
+import { ScrollView } from 'react-native-gesture-handler';
+
+const DATA = [
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    title: 'First Item',
+  },
+  {
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    title: 'Second Item',
+  },
+  {
+    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    title: 'Third Item',
+  },
+  {
+    id: '58694a0f-3da1-471f-dawd-145571e29d72',
+    title: 'fourth Item',
+  },
+
+];
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -22,23 +46,42 @@ class HomeScreen extends Component {
   }
   render() {
     const { navigation } = this.props
-    return (
-      <View style={styles.container}>
-        <View style={ {flex: 2} }>
-          <SliderBox images={this.state.images} sliderBoxHeight={250}/>
-        </View>
-        <View style={ {flex: 1.5} }>
-          <CustomButton title="Order Bread" navigation={navigation} />
-          <View style={ {flex: 0.1, backgroundColor: "#707070"} } />
-          <View style={styles.categoryStyle}>
-            <Text style={styles.categoryFont}>Category</Text>
-          </View>
-          <View style={ {flex: 0.1, backgroundColor: "#707070"} } />
-        </View>
-        <View style={ {flex: 3} }>
+    const renderItem = ({item}) => (
+      <DiscountCard title={item.title} />
+    );
 
-        </View>
-      </View>
+    return (
+      <SafeAreaView style={styles.container}>
+        <ScrollView>
+          <View style={ {flex: 2} }>
+            <SliderBox images={this.state.images} sliderBoxHeight={250}/>
+          </View>
+          <View style={ {flex: 1.5} }>
+            <CustomButton title="Order Bread" navigation={navigation} style={styles.OrderButton} fontStyle={styles.fontOrderButton} />
+            <View style={styles.categoryStyle}>
+              <Text style={styles.categoryFont}>Category</Text>
+            </View>
+          </View>
+          <View style={ {flex: 3} }>
+            <DiscountCard title="1" />
+            <DiscountCard title="1" />
+            <DiscountCard title="1" />
+            <DiscountCard title="1" />
+            <DiscountCard title="1" />
+            <DiscountCard title="1" />
+            <DiscountCard title="1" />
+            <DiscountCard title="1" />
+            <DiscountCard title="1" />
+            <DiscountCard title="1" />
+          </View>
+          <View style={ {flex: 1, backgroundColor: "#D76529"} }>
+            <Text>sdadwadawdawdaw</Text>
+          </View>
+
+        </ScrollView>
+        
+        
+      </SafeAreaView>
     );
   }
 }
@@ -58,6 +101,21 @@ const styles = StyleSheet.create({
     color: "#D76529",
     fontSize: 15,
     fontWeight: "bold",
+  },
+  OrderButton: {
+    borderRadius: 50,
+    backgroundColor: "#D76529",
+    width: "85%",
+    height: "70%",
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: "#000",
+    borderWidth: 1,
+  },
+  fontOrderButton: {
+    color: "#fff",
+    fontWeight: 'bold',
+    fontSize: 20,
   }
 })
 

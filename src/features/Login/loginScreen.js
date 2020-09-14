@@ -28,7 +28,7 @@ export default function LoginScreen( {navigation} ) {
             <TextButton title="Sign UP" navigation={navigation} routeName="RegisterScreen" />
         </View>
         <View style={{flex: 1}}>
-            <CustomBottom title="Login" navigation={navigation} routeName="HomeScreen" />
+            <CustomBottom title="Login" navigation={navigation} routeName="HomeScreen" style={styles.loginBox}/>
         </View>
 
     
@@ -54,6 +54,15 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#F5F0F0',
         letterSpacing: 1,
+    },
+    loginBox: {
+        borderRadius: 12,
+        backgroundColor: "#FFF",
+        width: "72%",
+        height: "55%",
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: "#000",
+        borderWidth: 1
     }
-    
 })
