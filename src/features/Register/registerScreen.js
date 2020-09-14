@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 import { View, Text, TextInput, StyleSheet, Image, SafeAreaView} from 'react-native'
 import CustomButton from '../../components/customButton'
 import { ScrollView } from 'react-native-gesture-handler' 
