@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { View, Text, TextInput, StyleSheet, Image} from 'react-native'
-import CustomBottom from '../../components/customBottom'
+import CustomButton from '../../components/customButton'
 import TextButton from '../../components/textButton'
 
 export default function LoginScreen( {navigation} ) {
@@ -28,7 +28,7 @@ export default function LoginScreen( {navigation} ) {
             <TextButton title="Sign UP" navigation={navigation} routeName="RegisterScreen" />
         </View>
         <View style={{flex: 1}}>
-            <CustomBottom title="Login" navigation={navigation} routeName="HomeScreen" style={styles.loginBox}/>
+            <CustomButton title="Login" navigation={navigation} routeName="HomeScreen" style={styles.loginBox}/>
         </View>
 
     

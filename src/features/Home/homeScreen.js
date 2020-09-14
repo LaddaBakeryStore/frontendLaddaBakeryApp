@@ -8,7 +8,7 @@ import {
   SafeAreaView,
 } from 'react-native'
 import { SliderBox } from "react-native-image-slider-box"
-import CustomButton from "../../components/customBottom"
+import CustomButton from "../../components/customButton"
 import DiscountCard from '../../components/discountCard';
 import { ScrollView } from 'react-native-gesture-handler';
 

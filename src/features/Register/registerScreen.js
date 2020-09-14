@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { View, Text, TextInput, StyleSheet, Image, SafeAreaView} from 'react-native'
-import CustomBottom from '../../components/customBottom'
+import CustomButton from '../../components/customButton'
 import { ScrollView } from 'react-native-gesture-handler' 
 
 
@@ -59,7 +59,7 @@ export default function LoginScreen( {navigation} ) {
                     style={styles.textDetailBox}
                     onChangeText={text => setText(text)}/>   
              <View style={{flex: 1,height: "99%"}}>
-                <CustomBottom title="Register" navigation={navigation} routeName="HomeScreen" />
+                <CustomButton title="Register" navigation={navigation} routeName="HomeScreen" />
             </View>      
         </View>
     </SafeAreaView>
