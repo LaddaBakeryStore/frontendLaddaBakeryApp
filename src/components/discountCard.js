@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View, Text, StyleSheet} from 'react-native'
+import {View, Text, StyleSheet, StatusBar} from 'react-native'
 
 class discountCard extends Component {
     constructor(props){
@@ -18,7 +18,7 @@ class discountCard extends Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      marginTop: 0,
+      marginTop: StatusBar.currentHeight || 0,
     },
     item: {
       backgroundColor: '#f9c2ff',
