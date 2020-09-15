@@ -15,24 +15,13 @@ class CustomButton extends Component {
         const customStyles = StyleSheet.flatten([style]);
         const fontStyles = StyleSheet.flatten([fontStyle]);
         return (
-            <View style={styles.container}> 
-                <TouchableOpacity style={customStyles} onPress={() => navigation.navigate( {routeName} )}>
-                    <Text style={fontStyle}>
-                        { title }
-                    </Text>
-                </TouchableOpacity>
-            </View>
+            <TouchableOpacity style={customStyles} onPress={() => navigation.navigate( {routeName} )}>
+                <Text style={fontStyles}>
+                    { title }
+                </Text>
+            </TouchableOpacity>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 10, 
-    },
-});
-
 
 export default CustomButton;

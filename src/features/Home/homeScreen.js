@@ -6,30 +6,60 @@ import {
   StyleSheet,
   FlatList,
   SafeAreaView,
+  TouchableHighlight,
 } from 'react-native'
 import { SliderBox } from "react-native-image-slider-box"
 import CustomButton from "../../components/customButton"
 import DiscountCard from '../../components/discountCard';
-import { ScrollView } from 'react-native-gesture-handler';
+import { color } from 'react-native-reanimated';
 
 const DATA = [
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Item',
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+    title: "First Item",
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item',
+    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+    title: "Second Item",
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },{
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28baw",
+    title: "First Item",
   },
   {
-    id: '58694a0f-3da1-471f-dawd-145571e29d72',
-    title: 'fourth Item',
+    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63s",
+    title: "Second Item",
   },
-
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72a",
+    title: "Third Item",
+  },
+  {
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28baasda",
+    title: "First Item",
+  },
+  {
+    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f631",
+    title: "Second Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d7222",
+    title: "Third Item",
+  },{
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28baw333",
+    title: "First Item",
+  },
+  {
+    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63s444",
+    title: "Second Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d725555",
+    title: "Third Item",
+  },
 ];
 
 class HomeScreen extends Component {
@@ -45,42 +75,43 @@ class HomeScreen extends Component {
     };
   }
   render() {
-    const { navigation } = this.props
+    const { navigation, routeName } = this.props
     const renderItem = ({item}) => (
       <DiscountCard title={item.title} />
     );
 
     return (
       <SafeAreaView style={styles.container}>
-        <ScrollView>
-          <View style={ {flex: 2} }>
-            <SliderBox images={this.state.images} sliderBoxHeight={250}/>
-          </View>
-          <View style={ {flex: 1.5} }>
-            <CustomButton title="Order Bread" navigation={navigation} style={styles.OrderButton} fontStyle={styles.fontOrderButton} />
-            <View style={styles.categoryStyle}>
-              <Text style={styles.categoryFont}>Category</Text>
+        <FlatList
+          data={DATA}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+          ListHeaderComponent={
+          <View style={styles.container}>
+            <View>
+              <SliderBox images={this.state.images}/>
+            </View>
+            <View style={{alignItems: 'center'}}>
+              <View>
+                <Text></Text>
+              </View>
+              <CustomButton title="Order Bread" style={styles.OrderButton} fontStyle={styles.fontOrderButton} navigation={navigation}/>
+              <View>
+                <Text></Text>
+              </View>
+            </View>
+            <View style={styles.styleCategory}>
+              <Text style={styles.fontCategory}>Category</Text>
             </View>
           </View>
-          <View style={ {flex: 3} }>
-            <DiscountCard title="1" />
-            <DiscountCard title="1" />
-            <DiscountCard title="1" />
-            <DiscountCard title="1" />
-            <DiscountCard title="1" />
-            <DiscountCard title="1" />
-            <DiscountCard title="1" />
-            <DiscountCard title="1" />
-            <DiscountCard title="1" />
-            <DiscountCard title="1" />
-          </View>
-          <View style={ {flex: 1, backgroundColor: "#D76529"} }>
-            <Text>sdadwadawdawdaw</Text>
-          </View>
 
-        </ScrollView>
-        
-        
+          }
+          ListFooterComponent={
+            <View style={ {backgroundColor: "#D76529"} }>
+              <Text></Text>
+            </View>
+          }
+        />
       </SafeAreaView>
     );
   }
@@ -90,14 +121,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'center',
   },
-  categoryStyle: {
+  styleCategory: {
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 0.5
+    flex: 1,
+    borderBottomColor: "#000",
+    borderBottomWidth: 2,
+    borderTopWidth: 2,
+    borderColor: "#707070",
   },
-  categoryFont: {
+  fontCategory: {
     color: "#D76529",
     fontSize: 15,
     fontWeight: "bold",
@@ -105,12 +139,12 @@ const styles = StyleSheet.create({
   OrderButton: {
     borderRadius: 50,
     backgroundColor: "#D76529",
-    width: "85%",
-    height: "70%",
-    alignItems: 'center',
-    justifyContent: 'center',
     borderColor: "#000",
     borderWidth: 1,
+    paddingVertical: 14,
+    paddingHorizontal: 10,
+    alignItems: 'center',
+    width: "90%",
   },
   fontOrderButton: {
     color: "#fff",

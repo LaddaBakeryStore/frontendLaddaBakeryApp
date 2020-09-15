@@ -3,8 +3,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import HomeScreen from '../features/Home/homeScreen';
 import HomeHeader from '../features/Home/homeHeader'
-import LoginScreen from '../features/Login/loginScreen';
-import RegisterScreen from '../features/Register/registerScreen';
+
 
 const screens = {
     HomeScreen: {
@@ -15,19 +14,8 @@ const screens = {
             }
         }
     },
-    LoginScreen: {
-        screen: LoginScreen,
-    },
-    RegisterScreen: {
-        screen: RegisterScreen,
-    }
 }
 
-const HomeStack = createStackNavigator(screens, {
-    defaultNavigationOptions: {
-        headerTintColor: '#444',
-        headerStyle: { backgroundColor: '#D76529', height: 60 }
-    }
-});
+const HomeStack = createStackNavigator(screens);
 
 export default createAppContainer(HomeStack);
