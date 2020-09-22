@@ -1,2 +1,1 @@
 # frontendLaddaBakeryApp
-# atm-spring-annotation
