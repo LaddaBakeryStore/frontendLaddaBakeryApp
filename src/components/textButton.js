@@ -14,7 +14,7 @@ class TextButton extends Component {
         const {title, navigation, routeName} = this.props;
         return (
             <View style={styles.container}>
-                <TouchableOpacity onPress={() => navigation.navigate( {routeName} )}>
+                <TouchableOpacity onPress={() => navigation.navigate( routeName )}>
                     <Text>
                         { title }
                     </Text>                    

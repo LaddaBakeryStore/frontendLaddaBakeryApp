@@ -10,8 +10,8 @@ import {
 } from 'react-native'
 import { SliderBox } from "react-native-image-slider-box"
 import CustomButton from "../../components/customButton"
-import DiscountCard from '../../components/discountCard';
-import { color } from 'react-native-reanimated';
+import DiscountCard from '../../components/discountCard'
+import CustomHeader from '../../components/customHeader'
 
 const DATA = [
   {
@@ -82,6 +82,7 @@ class HomeScreen extends Component {
 
     return (
       <SafeAreaView style={styles.container}>
+        <CustomHeader title="Home" isHome={true} navigation={navigation} isMenu={true}/>
         <FlatList
           data={DATA}
           renderItem={renderItem}
@@ -95,7 +96,7 @@ class HomeScreen extends Component {
               <View>
                 <Text></Text>
               </View>
-              <CustomButton title="Order Bread" style={styles.OrderButton} fontStyle={styles.fontOrderButton} navigation={navigation}/>
+              <CustomButton title="Order Bread" style={styles.OrderButton} fontStyle={styles.fontOrderButton} navigation={navigation} routeName='MenuScreen'/>
               <View>
                 <Text></Text>
               </View>
