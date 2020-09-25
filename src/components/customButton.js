@@ -15,7 +15,7 @@ class CustomButton extends Component {
         const customStyles = StyleSheet.flatten([style]);
         const fontStyles = StyleSheet.flatten([fontStyle]);
         return (
-            <TouchableOpacity style={customStyles} onPress={() => navigation.navigate( {routeName} )}>
+            <TouchableOpacity style={customStyles} onPress={() => navigation.navigate( routeName )}>
                 <Text style={fontStyles}>
                     { title }
                 </Text>

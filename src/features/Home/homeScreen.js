@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
-import { 
+import {
   View,
   Text,
-  Button,
   StyleSheet,
   FlatList,
   SafeAreaView,
-  TouchableHighlight,
 } from 'react-native'
 import { SliderBox } from "react-native-image-slider-box"
 import CustomButton from "../../components/customButton"
-import DiscountCard from '../../components/discountCard';
-import { color } from 'react-native-reanimated';
+import DiscountCard from './discountCard'
+import CustomHeader from '../../components/customHeader'
+import LinearGradient from 'react-native-linear-gradient'
 
 const DATA = [
   {
@@ -25,40 +24,25 @@ const DATA = [
   {
     id: "58694a0f-3da1-471f-bd96-145571e29d72",
     title: "Third Item",
-  },{
+  }, {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28baw",
-    title: "First Item",
+    title: "Fourth Item",
   },
   {
     id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63s",
-    title: "Second Item",
+    title: "Fifth Item",
   },
   {
     id: "58694a0f-3da1-471f-bd96-145571e29d72a",
-    title: "Third Item",
+    title: "Sixth Item",
   },
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28baasda",
-    title: "First Item",
+    title: "Seventh Item",
   },
   {
     id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f631",
-    title: "Second Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d7222",
-    title: "Third Item",
-  },{
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28baw333",
-    title: "First Item",
-  },
-  {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63s444",
-    title: "Second Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d725555",
-    title: "Third Item",
+    title: "Eighth Item",
   },
 ];
 
@@ -76,40 +60,44 @@ class HomeScreen extends Component {
   }
   render() {
     const { navigation, routeName } = this.props
-    const renderItem = ({item}) => (
+    const renderItem = ({ item }) => (
       <DiscountCard title={item.title} />
     );
 
     return (
       <SafeAreaView style={styles.container}>
+        <LinearGradient colors={["#D76529", "#E97314", "#FA8100"]}>
+          <CustomHeader title="Home" isHome={true} navigation={navigation} isMenu={true} />
+        </LinearGradient>
         <FlatList
           data={DATA}
           renderItem={renderItem}
           keyExtractor={item => item.id}
           ListHeaderComponent={
-          <View style={styles.container}>
-            <View>
-              <SliderBox images={this.state.images}/>
-            </View>
-            <View style={{alignItems: 'center'}}>
-              <View>
-                <Text></Text>
+            <LinearGradient colors={["#D76529", "#E97314", "#FA8100"]}>
+              <View style={styles.container}>
+                <View>
+                  <SliderBox images={this.state.images} />
+                </View>
+                <View style={{ alignItems: 'center' }}>
+                  <View>
+                    <Text></Text>
+                  </View>
+                  <CustomButton title="Order Bread" style={styles.OrderButton} fontStyle={styles.fontOrderButton} navigation={navigation} routeName='MenuScreen' />
+                  <View>
+                    <Text></Text>
+                  </View>
+                </View>
+                <View style={styles.styleCategory}>
+                  <Text style={styles.fontCategory}>Category</Text>
+                </View>
               </View>
-              <CustomButton title="Order Bread" style={styles.OrderButton} fontStyle={styles.fontOrderButton} navigation={navigation}/>
-              <View>
-                <Text></Text>
-              </View>
-            </View>
-            <View style={styles.styleCategory}>
-              <Text style={styles.fontCategory}>Category</Text>
-            </View>
-          </View>
-
+            </LinearGradient>
           }
           ListFooterComponent={
-            <View style={ {backgroundColor: "#D76529"} }>
-              <Text></Text>
-            </View>
+            <LinearGradient colors={["#D76529", "#E97314", "#FA8100"]} style={{ backgroundColor: "#D76529" }}>
+              <Text>{'\n'}</Text>
+            </LinearGradient>
           }
         />
       </SafeAreaView>
@@ -126,13 +114,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-    borderBottomColor: "#000",
+
     borderBottomWidth: 2,
     borderTopWidth: 2,
     borderColor: "#707070",
   },
   fontCategory: {
-    color: "#D76529",
+    color: "#fff",
     fontSize: 15,
     fontWeight: "bold",
   },

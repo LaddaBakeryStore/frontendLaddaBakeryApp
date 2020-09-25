@@ -11,10 +11,10 @@ class ImageButton extends Component {
         super(props)
     }
     render() {
-        const {title, navigation, routeName} = this.props;
+        const {navigation, routeName} = this.props;
         return (
             <View style={styles.container}>
-                <TouchableOpacity onPress={() => navigation.navigate( {routeName} )}>
+                <TouchableOpacity onPress={() => navigation.navigate( routeName )}>
                     <Image source={require('../assets/profile.png')} style={{width: 48, height: 48}}/>
                 </TouchableOpacity>
             </View>
