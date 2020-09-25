@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, TextInput, StyleSheet, Image, SafeAreaView, FlatList, Dimensions} from 'react-native'
 import CustomButton from '../../components/customButton'
 import CustomHeader from '../../components/customHeader'
+import LinearGradient from 'react-native-linear-gradient'
 
 var {width} = Dimensions.get('window');
 var {height} = Dimensions.get('window');
@@ -17,9 +18,9 @@ class RegisterScreen extends Component{
         const {navigation} =this.props
         return (
             <SafeAreaView style={styles.container}>
-                <CustomHeader title="Register" isHome={false} navigation={navigation} routeName="LoginScreen" />
+                <CustomHeader title="" isHome={false} navigation={navigation} routeName="LoginScreen" />
                 <FlatList ListHeaderComponent={
-                    <View> 
+                    <LinearGradient colors={['#D76529', '#E97314', '#FA8100']} > 
                         <View style={{alignItems: "center", justifyContent: "center", zIndex: 1} }>
                             <View>
                                 <Image source={require('../../assets/bread.png')} />
@@ -93,10 +94,10 @@ class RegisterScreen extends Component{
                                 </View>
                             </View>     
                         </View>
-                        <View style={styles.ovalShapeView}>
+                        <LinearGradient colors={['#CEC1C1', '#999090', '#676161']} style={styles.ovalShapeView}>
         
-                        </View>
-                    </View>
+                        </LinearGradient>
+                    </LinearGradient>
                 }/>
             </SafeAreaView>
             );
@@ -137,7 +138,6 @@ const styles = StyleSheet.create({
         margin: 170,
         width: width * 1.1,
         height: height * 0.6,
-        backgroundColor: '#CEC1C1',
         borderRadius: height / 2,
         transform: [
             {scaleY: 2}

@@ -3,6 +3,7 @@ import { View, Text, TextInput, StyleSheet, Image, Dimensions, FlatList} from 'r
 import CustomButton from '../../components/customButton'
 import TextButton from '../../components/textButton'
 import CustomHeader from '../../components/customHeader'
+import LinearGradient from 'react-native-linear-gradient';
 
 
 var {width} = Dimensions.get('window');
@@ -18,8 +19,8 @@ class LoginScreen extends Component {
     render() {
         const {navigation} = this.props
         return (
-        <View style={styles.container}>
-            <CustomHeader title="Login" isHome={false} navigation={navigation} routeName="HomeScreen" />
+        <LinearGradient colors={['#D76529', '#E97314', '#FA8100']} style={styles.container}>
+            <CustomHeader title="" isHome={false} navigation={navigation} routeName="HomeScreen" />
             <FlatList ListHeaderComponent={
             <View>
                 <View style={{alignItems: "center", justifyContent: "center"} }>
@@ -51,11 +52,11 @@ class LoginScreen extends Component {
                     </View>
                     <View style={ {alignItems: "center"} }>
                         <Text></Text>
-                        <CustomButton title="Login" navigation={navigation} style={styles.loginBox} routeName="HomeScreen"/>
+                        <CustomButton title="Login" navigation={navigation} style={styles.loginBox} fontStyle={styles.fontLoginBox} routeName="HomeScreen"/>
                     </View>
                 </View>
             </View>} />
-        </View>
+        </LinearGradient>
         );
     }
 }
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
         borderColor: "#000",
         borderRadius: 17,
         width: "72%",
-        backgroundColor: "#FFF"
+        backgroundColor: "#FFF",
     },
     container: {
         backgroundColor: '#D76529',
@@ -87,7 +88,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderColor: "#000",
-        borderWidth: 1
+        borderWidth: 1,
+    },
+    fontLoginBox: {
+        fontSize: 20,
+        fontWeight: "bold",
+        color: "#858282",
     },
     image: {
         width: width * 0.4,

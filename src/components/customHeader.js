@@ -35,7 +35,7 @@ class CustomHeader extends Component{
                 }
                 
                 <View style={{flex: 1.5, justifyContent: 'center'}}>
-                    <Text style={{textAlign: 'center'}}>{title}</Text>
+                    <Text style={{textAlign: 'center', fontSize: 22, color: '#fff'}}>{title}</Text>
                 </View>
                 {
                     (isHome || isMenu)?

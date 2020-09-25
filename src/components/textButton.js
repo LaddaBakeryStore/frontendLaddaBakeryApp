@@ -11,11 +11,12 @@ class TextButton extends Component {
         super(props)
     }
     render() {
-        const {title, navigation, routeName} = this.props;
+        const {title, navigation, routeName, fontStyle} = this.props;
+        const fontStyles = StyleSheet.flatten([fontStyle]);
         return (
             <View style={styles.container}>
                 <TouchableOpacity onPress={() => navigation.navigate( routeName )}>
-                    <Text>
+                    <Text style={fontStyles}>
                         { title }
                     </Text>                    
                 </TouchableOpacity>

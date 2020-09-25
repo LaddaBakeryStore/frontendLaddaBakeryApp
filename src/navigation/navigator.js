@@ -12,7 +12,7 @@ import MyOrdersScreen from '../features/MyOrders/myOrdersScreen'
 import OtherScreen from '../features/Other/otherScreen'
 import SideMenu from '../components/sideMenu'
 import MenuScreen from '../features/Menu/menuScreen';
-import ShoppingCartScreen from '../features/ShoppingCart/shoppingCart';
+import ShoppingCartScreen from '../features/ShoppingCart/shoppingCartScreen';
 import MapScreen from '../features/Map/MapScreen';
 import PaymentScreen from '../features/Payment/paymentScreen';
 
