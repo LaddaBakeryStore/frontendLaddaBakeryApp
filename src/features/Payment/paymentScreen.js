@@ -17,11 +17,11 @@ class PaymentScreen extends Component {
     }
     setDialogBoxVisible = (setVisible) => {
         this.setState({ visible: setVisible })
-        this.props.navigation.navigate('Drawer')
+        this.props.navigation.navigate('HomeScreen')
     }
 
     render() {
-        const { navigation } = this.props
+        const { navigation, route } = this.props
         const { visible } = this.state
         return (
             <LinearGradient style={{ flex: 1 }} colors={["#FA8100", "#B78047", "#808080"]} >
@@ -29,7 +29,7 @@ class PaymentScreen extends Component {
                     <CustomHeader title="Payment channals" navigation={navigation} routeName="ShoppingCartScreen" />
                 </View>
                 <View style={{ flex: 7 }}>
-                    <Text style={{ margin: 15, fontWeight: 'bold', fontSize: 22 }}>Ladda Store</Text>
+                    <Text style={{ margin: 15, fontWeight: 'bold', fontSize: 22 }}>{route.params.bread}</Text>
                     <PaymentCard message="Moblie Banking" image={require('../../assets/bank.png')} />
                     <PaymentCard message="Credit/Debit card" image={require('../../assets/credit.png')} />
                     <PaymentCard message="Cash on Delivery" image={require('../../assets/delivery.png')} />

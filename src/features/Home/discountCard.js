@@ -6,8 +6,8 @@ class discountCard extends Component {
     super(props);
   }
   render() {
-    const { title } = this.props
-    let Image_Http_URL = { uri: "https://www.farmhouse.co.th/uploads/products/2020/2/1582514697.png" };
+    const { title, image, sale, price } = this.props
+    let Image_Http_URL = { uri: image };
     return (
       <View style={styles.item}>
         <View style={{ flex: 1 }}>
@@ -16,10 +16,10 @@ class discountCard extends Component {
         <View style={{ flex: 1 }}>
           <View style={{flex: 1, justifyContent: 'flex-start'}}>
             <Text style={styles.title}>{title}</Text>
-            <Text style={styles.title}>Flash sale xx%</Text>
+            <Text style={styles.title}>Flash sale {sale}%</Text>
           </View>
           <View style={{flex: 1, justifyContent: 'flex-end'}}>
-            <Text style={styles.fontPrice}>Only 20 baht</Text>
+            <Text style={styles.fontPrice}>Only {price} baht</Text>
           </View>
         </View>
       </View>

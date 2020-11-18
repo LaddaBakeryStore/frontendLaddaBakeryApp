@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, StyleSheet, Image, SafeAreaView, FlatList, Dimensions} from 'react-native'
+import { View, Text, TextInput, StyleSheet, Image, SafeAreaView, FlatList, Dimensions, TouchableOpacity, Button} from 'react-native'
 import CustomButton from '../../components/customButton'
 import CustomHeader from '../../components/customHeader'
 import LinearGradient from 'react-native-linear-gradient'
+import axios from 'axios'
 
 var {width} = Dimensions.get('window');
 var {height} = Dimensions.get('window');
@@ -11,9 +12,41 @@ class RegisterScreen extends Component{
     constructor(props){
         super(props)
         this.state = {
-            text: ''
+            fullName: '',
+            userName: '',
+            password: '',
+            email: '',
+            tel: '',
+            address: '',
+            moreDetail: '',
         }
     }
+
+    handleSubmit(event, navigation) {
+        event.preventDefault();
+        const user = {
+            fullName: this.state.fullName,
+            userName: this.state.userName,
+            password: this.state.password,
+            email: this.state.email,
+            tel: this.state.tel,
+            address: this.state.address,
+            moreDetail: this.state.moreDetail,
+        };
+        const url = 'http://192.168.1.46:8085/api/laddaBakery/registerAccount?' + 'fullName='+ user.fullName 
+                                                                            + '&userName=' + user.userName 
+                                                                            + '&password=' + user.password
+                                                                            + '&email=' + user.email
+                                                                            + '&tel=' + user.tel
+                                                                            + '&address=' + user.address
+                                                                            + '&moreDetail=' + user.moreDetail
+        axios.post(url)
+          .then(res => {
+            console.log(res.data);
+        })
+        navigation.navigate('LoginScreen')
+    }
+
     render(){
         const {navigation} =this.props
         return (
@@ -39,32 +72,33 @@ class RegisterScreen extends Component{
                                 placeholderTextColor = "#545050"
                                 placeholder={" Full name"}
                                 style={styles.textInputBox}
-                                onChangeText={() => this.setState({text: this.state.text})}/>
+                                onChangeText={(fullName) => this.setState({fullName})}/>
                             <TextInput 
                                 placeholder={" User name"}
                                 placeholderTextColor = "#545050"
                                 style={styles.textInputBox}
-                                onChangeText={() => this.setState({text: this.state.text})}/>
+                                onChangeText={(userName) => this.setState({userName})}/>
                             <TextInput 
                                 placeholderTextColor = "#545050"
                                 placeholder={" Password"}
                                 style={styles.textInputBox}
-                                onChangeText={() => this.setState({text: this.state.text})}/>
+                                secureTextEntry={true}  
+                                onChangeText={(password) => this.setState({password})}/>
                             <TextInput
                                 placeholderTextColor = "#545050" 
                                 placeholder={" Email"}
                                 style={styles.textInputBox}
-                                onChangeText={() => this.setState({text: this.state.text})}/>
+                                onChangeText={(email) => this.setState({email})}/>
                             <TextInput 
                                 placeholderTextColor = "#545050"
                                 placeholder={" Tel."}
                                 style={styles.textInputBox}
-                                onChangeText={() => this.setState({text: this.state.text})}/>
+                                onChangeText={(tel) => this.setState({tel})}/>
                             <TextInput 
                                 placeholderTextColor = "#545050"
                                 placeholder={" Address"}
                                 style={styles.textInputBox}
-                                onChangeText={() => this.setState({text: this.state.text})}/>
+                                onChangeText={(address) => this.setState({address})}/>
                             <Text></Text>
                             <View style={ {flexDirection: 'row'} }>
                                 <View style= { {flex: 1} }>
@@ -76,7 +110,7 @@ class RegisterScreen extends Component{
                             </View>                    
                             <TextInput 
                                 style={styles.textDetailBox}
-                                onChangeText={() => this.setState({text: this.state.text})}
+                                onChangeText={(moreDetail) => this.setState({moreDetail})}
                                 multiline/>
                             <Text></Text>
                             <View style={ {flexDirection: 'row'} }>
@@ -90,7 +124,7 @@ class RegisterScreen extends Component{
                                     
                                 </View>
                                 <View style={ {flex: 1}}>
-                                    <CustomButton title="Register" navigation={navigation} routeName="LoginScreen" style={styles.registerButton} fontStyle={styles.fontRegisterButton}/>
+                                    <Button title="Register" onPress={(event) => this.handleSubmit(event, navigation)}/>
                                 </View>
                             </View>     
                         </View>

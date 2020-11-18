@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, StyleSheet, Image, Dimensions, FlatList} from 'react-native'
+import { View, Text, TextInput, StyleSheet, Image, Dimensions, FlatList, Button} from 'react-native'
 import CustomButton from '../../components/customButton'
 import TextButton from '../../components/textButton'
 import CustomHeader from '../../components/customHeader'
 import LinearGradient from 'react-native-linear-gradient';
-
+import axios from 'axios'
 
 var {width} = Dimensions.get('window');
 var {height} = Dimensions.get('window');
@@ -13,14 +13,40 @@ class LoginScreen extends Component {
     constructor(props){
         super(props)
         this.state = {
-            text: ''
+            userName: '',
+            password: '',
+            persons: [],
+            status: 0
         }
     }
+
+    handleSubmit(event, navigation) {
+        event.preventDefault();
+        const user = {
+            userName: this.state.userName,
+            password: this.state.password,
+        };
+        const url = 'http://192.168.1.46:8085/api/laddaBakery/loginAccount?' + '&userName=' + user.userName 
+                                                                            + '&password=' + user.password                                                           
+        axios.post(url)
+          .then(res => {
+            const persons = res.data;
+            this.setState({ persons });
+            this.setState({ status: 1 })
+            if (persons) {
+                navigation.navigate('HomeScreen', {
+                    person: this.state.persons,
+                    status: this.state.status,
+                })
+            }
+        })
+    }
+
     render() {
         const {navigation} = this.props
         return (
         <LinearGradient colors={['#D76529', '#E97314', '#FA8100']} style={styles.container}>
-            <CustomHeader title="" isHome={false} navigation={navigation} routeName="HomeScreen" />
+            <CustomHeader title="" isHome={false} navigation={navigation} routeName="HomeScreen" isLoginPage={true}/>
             <FlatList ListHeaderComponent={
             <View>
                 <View style={{alignItems: "center", justifyContent: "center"} }>
@@ -34,14 +60,15 @@ class LoginScreen extends Component {
                 <View style={{flex: 1}}>
                     <View style={{ alignItems: "center"}}>
                         <TextInput 
-                            placeholder={" ID or Email"}
+                            placeholder={" Username"}
                             style={styles.textInputBox}
-                            onChangeText={() => this.setState({text: this.state.text})} />
+                            onChangeText={(userName) => this.setState({userName})} />
                         <Text></Text>
                         <TextInput
                             placeholder={" Password"}
                             style={styles.textInputBox}
-                            onChangeText={() => this.setState({text: this.state.text})} />        
+                            secureTextEntry={true}
+                            onChangeText={(password) => this.setState({password})} />        
                     </View>
                     <View style={ {flexDirection: 'row'} }>
                         <View style={ {flex: 1.25}}>
@@ -52,7 +79,7 @@ class LoginScreen extends Component {
                     </View>
                     <View style={ {alignItems: "center"} }>
                         <Text></Text>
-                        <CustomButton title="Login" navigation={navigation} style={styles.loginBox} fontStyle={styles.fontLoginBox} routeName="HomeScreen"/>
+                        <Button title="Login" onPress={(event) => this.handleSubmit(event, navigation)} />
                     </View>
                 </View>
             </View>} />

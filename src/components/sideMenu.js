@@ -8,8 +8,8 @@ class SideMenu extends Component {
     super(props)
   }
   render() {
-    const { navigation } = this.props;
-
+    const { navigation, route, status } = this.props;
+    console.log("sidemenu " + route)
     return (
       <View style={styles.container}>
         <LinearGradient
@@ -38,7 +38,7 @@ class SideMenu extends Component {
 
             <TouchableOpacity style={styles.drawerTouch} onPress={() => navigation.navigate('NotificationScreen')}>
               <Image style={styles.iconLogo} source={require("../assets/notification.png")} />
-              <TextButton title="Notification" navigation={navigation} routeName="NotificationScreen" fontStyle={styles.drawerFontStyle} />
+              <TextButton title="Payments" navigation={navigation} routeName="NotificationScreen" fontStyle={styles.drawerFontStyle} />
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.drawerTouch} onPress={() => navigation.navigate('MyOrdersScreen')}>
@@ -46,22 +46,23 @@ class SideMenu extends Component {
               <TextButton title="MyOrders" navigation={navigation} routeName="MyOrdersScreen" fontStyle={styles.drawerFontStyle} />
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.drawerTouch} onPress={() => navigation.navigate('OtherScreen')}>
-              <Image style={styles.iconLogo} source={require("../assets/feedback.png")} />
-              <TextButton title="Feedback" navigation={navigation} routeName="OtherScreen" fontStyle={styles.drawerFontStyle} />
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.drawerTouch} onPress={() => navigation.navigate('OtherScreen')}>
-              <Image style={styles.iconLogo} source={require("../assets/help.png")} />
-              <TextButton title="Help" navigation={navigation} routeName="OtherScreen" fontStyle={styles.drawerFontStyle} />
-            </TouchableOpacity>
-
           </ScrollView>
         </View>
         <View style={styles.footerContainer}>
-          <TouchableOpacity style={styles.loginTouch} onPress={() => navigation.navigate('OtherScreen')}>
-            <Image style={styles.iconLogo} source={require("../assets/login.png")} />
-            <TextButton title="Login" navigation={navigation} routeName="LoginScreen" fontStyle={styles.drawerFontStyle}/>
+          <TouchableOpacity>
+            {
+              (!status) ?
+              <View style={styles.loginTouch}>
+                <Image style={styles.iconLogo} source={require("../assets/login.png")} />
+                <TextButton title="Login" navigation={navigation} routeName="LoginScreen" fontStyle={styles.drawerFontStyle}/>  
+              </View>
+              :
+              <View style={styles.loginTouch}>
+                <Image style={styles.iconLogo} source={require("../assets/logout.png")} />
+                <TextButton title="Logout" navigation={navigation} routeName="LoginScreen" fontStyle={styles.drawerFontStyle}/>
+              </View>
+            }
+            
           </TouchableOpacity>
         </View>
       </View>

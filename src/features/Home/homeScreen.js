@@ -15,34 +15,58 @@ import LinearGradient from 'react-native-linear-gradient'
 const DATA = [
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "First Item",
+    title: "Sandwich bread (Banana Bread Recipe)",
+    image: "http://www.thaismescenter.com/wp-content/uploads/2018/10/331.jpg",
+    sale: 10,
+    price: 40,
   },
   {
     id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    title: "Second Item",
+    title: "Raisin Bread",
+    image: "http://www.thaismescenter.com/wp-content/uploads/2018/10/312.jpg",
+    sale: 10,
+    price: 10,
   },
   {
     id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "Third Item",
+    title: "Butter Toast",
+    image: "http://www.thaismescenter.com/wp-content/uploads/2018/10/301.jpg",
+    sale: 15,
+    price: 30,
   }, {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28baw",
-    title: "Fourth Item",
+    title: "Sugar Butter Toast",
+    image: "http://www.thaismescenter.com/wp-content/uploads/2018/10/29.jpg",
+    sale: 10,
+    price: 40,
   },
   {
     id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63s",
-    title: "Fifth Item",
+    title: "Rainbow Stretch Cheese Bread",
+    image: "http://www.thaismescenter.com/wp-content/uploads/2018/10/w20.jpg",
+    sale: 20,
+    price: 35,
   },
   {
     id: "58694a0f-3da1-471f-bd96-145571e29d72a",
-    title: "Sixth Item",
+    title: "Caramel Biscuits",
+    image: "http://www.thaismescenter.com/wp-content/uploads/2018/10/271.jpg",
+    sale: 15,
+    price: 40,
   },
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28baasda",
-    title: "Seventh Item",
+    title: "Pork Chop Bun",
+    image: "http://www.thaismescenter.com/wp-content/uploads/2018/10/163.jpg",
+    sale: 20,
+    price: 20,
   },
   {
     id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f631",
-    title: "Eighth Item",
+    title: "Chicken Buns",
+    image: "http://www.thaismescenter.com/wp-content/uploads/2018/10/242.jpg",
+    sale: 10,
+    price: 25,
   },
 ];
 
@@ -55,19 +79,18 @@ class HomeScreen extends Component {
         "https://img.wongnai.com/p/1920x0/2020/02/09/b1016905f7064d559bf02b7cc1530a24.jpg",
         "https://s.isanook.com/wo/0/rp/r/w850/ya0xa0m1w0/aHR0cHM6Ly9zLmlzYW5vb2suY29tL3dvLzAvdWQvMzMvMTY1NTgxL2ZmLmpwZw==.jpg",
         "https://kcgcorporation.com/wp-content/uploads/2009/12/Loaf-Bread-.jpg"
-      ]
+      ],
     };
   }
   render() {
-    const { navigation, routeName } = this.props
+    const { navigation, routeName, route} = this.props
     const renderItem = ({ item }) => (
-      <DiscountCard title={item.title} />
+      <DiscountCard title={item.title} image={item.image} sale={item.sale} price={item.price} />
     );
-
     return (
       <SafeAreaView style={styles.container}>
         <LinearGradient colors={["#D76529", "#E97314", "#FA8100"]}>
-          <CustomHeader title="Home" isHome={true} navigation={navigation} isMenu={true} />
+          <CustomHeader title="Home" isHome={true} navigation={navigation} isMenu={true} isLogin={route.params.status}/>
         </LinearGradient>
         <FlatList
           data={DATA}
