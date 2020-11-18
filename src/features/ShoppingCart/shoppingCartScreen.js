@@ -34,7 +34,7 @@ class ShoppingCart extends Component {
                         </View>
                     </View>
                     <View style={styles.addressContainer}>
-                        <Text style={styles.addressLine}>991 Rama I Rd, Pathum Wan, Pathum Wan District, Bangkok 10330</Text>
+                        <Text style={styles.addressLine}>{route.params.user.address}</Text>
                     </View>
                 </View>
                 <View style={{ flex: 2 }}>
@@ -50,7 +50,7 @@ class ShoppingCart extends Component {
                     </View>
                     <View style={styles.footer}>
                         <ShoppingCartButton title="CHECKOUT" navigation={navigation} routeName="PaymentScreen" style={styles.checkOutButton} 
-                        fontStyle={styles.fontCheckOutButton} breadName={route.params.title} breadPrice={route.params.price} />
+                        fontStyle={styles.fontCheckOutButton} breadName={route.params.title} breadPrice={route.params.price} user={route.params.user}/>
                     </View>
                 </View>
             </LinearGradient>

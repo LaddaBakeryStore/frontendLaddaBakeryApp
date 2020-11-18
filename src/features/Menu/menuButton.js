@@ -10,7 +10,7 @@ class MenuButton extends Component {
         super(props);
     }
     render() {
-        const { title ,navigation, style, fontStyle, breadName, breadPrice, breadImage, routeName } = this.props;
+        const { title ,navigation, style, fontStyle, breadName, breadPrice, breadImage, routeName, user } = this.props;
         const customStyles = StyleSheet.flatten([style]);
         const fontStyles = StyleSheet.flatten([fontStyle]);
         return (
@@ -18,6 +18,7 @@ class MenuButton extends Component {
                 title: breadName,
                 price: breadPrice,
                 image: breadImage,
+                user: user,
             })}>
                 <Text style={fontStyles}>
                     { title }

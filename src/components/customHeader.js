@@ -13,7 +13,7 @@ class CustomHeader extends Component{
     }
 
     render() {
-        const {title, isHome, navigation, routeName, isMenu, isLogin, isLoginPage} = this.props
+        const {title, isHome, navigation, routeName, isMenu, isLogin, isLoginPage, user} = this.props
         return (
             <View style={{flexDirection: 'row', height: 50}}>
                 {
@@ -58,9 +58,22 @@ class CustomHeader extends Component{
                 <View style={{flex: 1.5, justifyContent: 'center'}}>
                     <Text style={{textAlign: 'center', fontSize: 22, color: '#fff'}}>{title}</Text>
                 </View>
-                <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
-                    
-                </View>          
+                {
+                    (isHome) ?
+                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
+                        <TouchableOpacity style={{flex: 1, flexDirection: 'row', alignItems: 'center'}} onPress={() => navigation.navigate( "ProfileScreen", {user: user} )} >
+                            <Image style={{width:30, height: 30, marginRight: 5}} 
+                                source={require("../assets/profile.png")}
+                                resizeMode="contain"
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    :
+                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
+
+                    </View>   
+                }
+                     
             </View>
         )
     }

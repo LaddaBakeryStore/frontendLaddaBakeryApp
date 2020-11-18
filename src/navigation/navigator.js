@@ -26,8 +26,6 @@ function DrawerNavigator() {
         <Drawer.Screen name="HomeScreen" component={HomeScreen} options={navOptionHandler} />
         <Drawer.Screen name="LoginScreen" component={LoginScreen}  options={navOptionHandler}/>
         <Drawer.Screen name="ProfileScreen" component={ProfileScreen} options={navOptionHandler}/>
-        <Drawer.Screen name="NotificationScreen" component={NotificationScreen} options={navOptionHandler}/>
-        <Drawer.Screen name="MyOrdersScreen" component={MyOrdersScreen} options={navOptionHandler}/>
     </Drawer.Navigator>
   )
 }
@@ -45,6 +43,10 @@ function Navigator() {
         <StackApp.Screen name="MenuScreen" component={MenuScreen} options={navOptionHandler} />
         <StackApp.Screen name="ShoppingCartScreen" component={ShoppingCartScreen} options={navOptionHandler} />
         <StackApp.Screen name="PaymentScreen" component={PaymentScreen} options={navOptionHandler} />
+        <StackApp.Screen name="ProfileScreen" component={ProfileScreen} options={navOptionHandler}/>
+        <StackApp.Screen name="NotificationScreen" component={NotificationScreen} options={navOptionHandler}/>
+        <StackApp.Screen name="MyOrdersScreen" component={MyOrdersScreen} options={navOptionHandler}/>
+
       </StackApp.Navigator>
     </NavigationContainer>
   )

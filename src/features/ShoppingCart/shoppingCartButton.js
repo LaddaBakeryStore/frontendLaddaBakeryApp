@@ -11,13 +11,14 @@ class ShoppingCartButton extends Component {
         super(props);
     }
     render() {
-        const { title ,navigation, routeName, style, fontStyle, breadName, breadPrice} = this.props;
+        const { title ,navigation, routeName, style, fontStyle, breadName, breadPrice, user} = this.props;
         const customStyles = StyleSheet.flatten([style]);
         const fontStyles = StyleSheet.flatten([fontStyle]);
         return (
             <TouchableOpacity style={customStyles} onPress={() => navigation.navigate( routeName, {
                 bread: breadName,
                 price: breadPrice,
+                user: user,
             } )}>
                 <Text style={fontStyles}>
                     { title }

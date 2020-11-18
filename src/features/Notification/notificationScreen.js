@@ -7,7 +7,7 @@ class NotificationScreen extends Component {
         const {navigation} = this.props
         return (
             <View>
-                <CustomHeader title="Notification" isHome={false} navigation={navigation} routeName="HomeScreen" />
+                <CustomHeader title="Notification" isHome={false} navigation={navigation} routeName="ProfileScreen" />
                 <Text>Notification screen</Text>
             </View>
         )

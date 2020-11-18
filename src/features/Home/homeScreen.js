@@ -90,7 +90,7 @@ class HomeScreen extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <LinearGradient colors={["#D76529", "#E97314", "#FA8100"]}>
-          <CustomHeader title="Home" isHome={true} navigation={navigation} isMenu={true} isLogin={route.params.status}/>
+          <CustomHeader title="Home" isHome={true} navigation={navigation} isMenu={true} isLogin={route.params.status} user={route.params.person}/>
         </LinearGradient>
         <FlatList
           data={DATA}
@@ -106,7 +106,7 @@ class HomeScreen extends Component {
                   <View>
                     <Text></Text>
                   </View>
-                  <CustomButton title="Order Bread" style={styles.OrderButton} fontStyle={styles.fontOrderButton} navigation={navigation} routeName='MenuScreen' />
+                  <CustomButton title="Order Bread" style={styles.OrderButton} fontStyle={styles.fontOrderButton} navigation={navigation} routeName='MenuScreen' user={route.params.person}/>
                   <View>
                     <Text></Text>
                   </View>

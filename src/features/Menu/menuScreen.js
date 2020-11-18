@@ -110,10 +110,10 @@ class MenuScreen extends Component {
         super(props);
     }
     render() {
-        const { navigation } = this.props
+        const { navigation, route } = this.props
         const renderItem = ({ item }) => (
             <View style={{ flexDirection: "row" }}>
-                <MenuCard title={item.title} image={item.image} price={item.price} navigation={navigation} />
+                <MenuCard title={item.title} image={item.image} price={item.price} navigation={navigation} user={route.params.user}/>
             </View>
         );
         return (

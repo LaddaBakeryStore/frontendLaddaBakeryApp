@@ -4,6 +4,7 @@ import CustomHeader from '../../components/customHeader'
 import LinearGradient from 'react-native-linear-gradient'
 import CustomButton from '../../components/customButton';
 import PaymentCard from './paymentCard';
+import axios from 'axios';
 
 const windowHeight = Dimensions.get('window').height;
 
@@ -12,7 +13,9 @@ class PaymentScreen extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            visible: false
+            visible: false,
+            orders: [],
+            bills: [],
         }
     }
     setDialogBoxVisible = (setVisible) => {
@@ -20,9 +23,81 @@ class PaymentScreen extends Component {
         this.props.navigation.navigate('HomeScreen')
     }
 
+    async handleSubmitConfirmButton(event) {
+        event.preventDefault();
+        this.setState({ visible: true });
+        const url = 'http://192.168.1.46:8085/api/order'
+        await axios.get(url)
+          .then(res => {
+              const orders = res.data;
+              this.setState({orders: orders})
+          })
+        var date = new Date();
+        const orderTime = date.getHours() + "/" + date.getMinutes() + "/" + date.getSeconds();
+        const orderDate = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+        var headers = {
+            'Content-Type': 'application/่json' 
+        }
+        const order = {
+            orderNo: this.state.orders.length,
+            orderName: this.props.route.params.user.fullName,
+            orderTotalPrice: "",
+            orderAddress: this.props.route.params.user.address,
+            orderTime: orderTime,
+            orderStatus: "prepare",
+            orderDate: orderDate,
+            deliveryFee: "30"
+        }
+        const url_post = 'http://192.168.1.46:8085/api/order?' + "orderNo=" + order.orderNo +
+                                                        "&orderName="+ order.orderName +
+                                                        "&orderTotalPrice="+ order.orderTotalPrice +
+                                                        "&orderAddress="+ order.orderAddress +
+                                                        "&orderTime="+ order.orderTime +
+                                                        "&orderStatus="+ order.orderStatus +
+                                                        "&orderDate="+ order.orderDate +
+                                                        "&deliveryFee="+ order.deliveryFee
+        axios.post(url_post)
+          .then(res => {    
+              console.log(res.data)
+        })
+
+        const url_bill = 'http://192.168.1.46:8085/api/bill'
+        await axios.get(url_bill)
+          .then(res => {
+              const bills = res.data;
+              this.setState({bills: bills})
+        })
+
+        const bill = {
+            billNo: "",
+            billAddress: "",
+            billStatus: "",
+            billTotalPrice: "",
+            billDate: "", 
+            billTime: "", 
+            senderName: "",
+            recipientName: "", 
+            paymentMethod: "",
+        }
+        const url_port_bill = "http://192.168.1.46:8085/api/bill/?" + "billNo=" + bill.billNo +
+                                                            "&billAddress=" + bill.billAddress +
+                                                            "&billStatus=" + bill.billStatus +
+                                                            "&billTotalPrice=" + bill.billTotalPrice +
+                                                            "&billDate=" + bill.billDate +
+                                                            "&billTime=" + bill.billTime +
+                                                            "&senderName=" + bill.senderName +
+                                                            "&recipientName=" + bill.recipientName +
+                                                            "&paymentMethod=" + bill.paymentMethod;
+        axios.post(url_port_bill)
+           .then(res => {    
+            console.log(res.data)
+        })
+    }
+
     render() {
         const { navigation, route } = this.props
         const { visible } = this.state
+        
         return (
             <LinearGradient style={{ flex: 1 }} colors={["#FA8100", "#B78047", "#808080"]} >
                 <View style={{ flex: 1 }}>
@@ -36,7 +111,7 @@ class PaymentScreen extends Component {
                 </View>
                 <View style={{ flex: 1, flexDirection: 'column-reverse' }}>
                     <View style={styles.confirmButtonContainer}>
-                        <TouchableOpacity onPress={() => { this.setState({ visible: true }) }} style={styles.confirmButton}>
+                        <TouchableOpacity onPress={(event) => {this.handleSubmitConfirmButton(event)} } style={styles.confirmButton}>
                             <Text style={styles.confirmButtonFont}>Confirm</Text>
                         </TouchableOpacity>
                     </View>

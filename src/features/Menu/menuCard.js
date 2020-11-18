@@ -10,7 +10,7 @@ class MenuCard extends Component {
         super(props);
     }
     render() {
-        const { title, image, price, navigation } = this.props
+        const { title, image, price, navigation, user } = this.props
         let Image_Http_URL = { uri: image };
 
         return (
@@ -24,7 +24,7 @@ class MenuCard extends Component {
                     <Text style={styles.priceStyle}>{price}</Text>
                 </View>
                 <MenuButton title="BUY" navigation={navigation} routeName='ShoppingCartScreen' style={styles.buttonStyle} 
-                fontStyle={styles.fontStyle} breadName={title} breadPrice={price} breadImage={image} />
+                fontStyle={styles.fontStyle} breadName={title} breadPrice={price} breadImage={image} user={user}/>
             </View>
         )
     }
