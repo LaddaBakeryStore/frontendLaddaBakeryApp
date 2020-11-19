@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { View, Text, FlatList, StyleSheet } from 'react-native'
 import CustomHeader from '../../components/customHeader'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import LinearGradient from 'react-native-linear-gradient'
 import MenuCard from './menuCard'
 
 const DATA = [
@@ -118,7 +117,7 @@ class MenuScreen extends Component {
         );
         return (
             <SafeAreaView>
-                <LinearGradient colors={["#D76529", "#A26B4E", "#707070"]} >
+                <View>
                     <FlatList
                         data={DATA}
                         renderItem={renderItem}
@@ -132,7 +131,7 @@ class MenuScreen extends Component {
                             </View>
                         }
                     />
-                </LinearGradient>
+                </View>
             </SafeAreaView>
         )
     }

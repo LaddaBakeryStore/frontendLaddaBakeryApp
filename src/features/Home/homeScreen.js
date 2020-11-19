@@ -10,7 +10,6 @@ import { SliderBox } from "react-native-image-slider-box"
 import CustomButton from "../../components/customButton"
 import DiscountCard from './discountCard'
 import CustomHeader from '../../components/customHeader'
-import LinearGradient from 'react-native-linear-gradient'
 
 const DATA = [
   {
@@ -89,15 +88,15 @@ class HomeScreen extends Component {
     );
     return (
       <SafeAreaView style={styles.container}>
-        <LinearGradient colors={["#D76529", "#E97314", "#FA8100"]}>
+        <View>
           <CustomHeader title="Home" isHome={true} navigation={navigation} isMenu={true} isLogin={route.params.status} user={route.params.person}/>
-        </LinearGradient>
+        </View>
         <FlatList
           data={DATA}
           renderItem={renderItem}
           keyExtractor={item => item.id}
           ListHeaderComponent={
-            <LinearGradient colors={["#D76529", "#E97314", "#FA8100"]}>
+            <View>
               <View style={styles.container}>
                 <View>
                   <SliderBox images={this.state.images} />
@@ -115,12 +114,12 @@ class HomeScreen extends Component {
                   <Text style={styles.fontCategory}>Category</Text>
                 </View>
               </View>
-            </LinearGradient>
+            </View>
           }
           ListFooterComponent={
-            <LinearGradient colors={["#D76529", "#E97314", "#FA8100"]} style={{ backgroundColor: "#D76529" }}>
+            <View style={{ backgroundColor: "#D76529" }}>
               <Text>{'\n'}</Text>
-            </LinearGradient>
+            </View>
           }
         />
       </SafeAreaView>

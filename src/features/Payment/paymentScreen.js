@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, SafeAreaView, Modal, TouchableOpacity, Dimensions } from 'react-native'
 import CustomHeader from '../../components/customHeader'
-import LinearGradient from 'react-native-linear-gradient'
-import CustomButton from '../../components/customButton';
 import PaymentCard from './paymentCard';
 import axios from 'axios';
 
@@ -104,7 +102,7 @@ class PaymentScreen extends Component {
         const { visible } = this.state
         
         return (
-            <LinearGradient style={{ flex: 1 }} colors={["#FA8100", "#B78047", "#808080"]} >
+            <View style={{ flex: 1 }}>
                 <View style={{ flex: 1 }}>
                     <CustomHeader title="Payment channals" navigation={navigation} routeName="ShoppingCartScreen" />
                 </View>
@@ -139,7 +137,7 @@ class PaymentScreen extends Component {
                         </View>
                     </View>
                 </Modal>
-            </LinearGradient>
+            </View>
         )
     }
 }

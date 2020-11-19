@@ -3,7 +3,6 @@ import { View, Text, TextInput, StyleSheet, Image, Dimensions, FlatList, Button}
 import CustomButton from '../../components/customButton'
 import TextButton from '../../components/textButton'
 import CustomHeader from '../../components/customHeader'
-import LinearGradient from 'react-native-linear-gradient';
 import axios from 'axios'
 
 var {width} = Dimensions.get('window');
@@ -45,7 +44,7 @@ class LoginScreen extends Component {
     render() {
         const {navigation} = this.props
         return (
-        <LinearGradient colors={['#D76529', '#E97314', '#FA8100']} style={styles.container}>
+        <View style={styles.container}>
             <CustomHeader title="" isHome={false} navigation={navigation} routeName="HomeScreen" isLoginPage={true}/>
             <FlatList ListHeaderComponent={
             <View>
@@ -83,7 +82,7 @@ class LoginScreen extends Component {
                     </View>
                 </View>
             </View>} />
-        </LinearGradient>
+        </View>
         );
     }
 }

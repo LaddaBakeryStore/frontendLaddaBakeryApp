@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Dimensions, Button } from 'react-native'
 import CustomHeader from '../../components/customHeader'
-import LinearGradient from 'react-native-linear-gradient';
 
 const windowWidth = Dimensions.get('window').width
 const windowHeight = Dimensions.get('window').height
@@ -13,7 +12,7 @@ class ProfileScreen extends Component {
         console.log()
         return (
             <View style={styles.container}>
-                <LinearGradient colors={["#FA8100", "#E57600", "#CD6A00"]} style={styles.circle}>
+                <View style={styles.circle}>
                     <CustomHeader title="Profile" isHome={false} navigation={navigation} routeName="HomeScreen"/>
                     <View style={styles.profileBox}>
                         <Text>Username: {route.params.user.userName}</Text>
@@ -23,7 +22,7 @@ class ProfileScreen extends Component {
                         <Text>Email: {route.params.user.email}</Text>
                         <Text>Tel: {route.params.user.tel}</Text>
                     </View>
-                </LinearGradient>
+                </View>
                 <View style={{ flex: 0.5, backgroundColor: '#fff', justifyContent: 'space-evenly'}}>
                     <Button title="Notification" onPress={() => navigation.navigate("NotificationScreen", {
                         user: route.params.user

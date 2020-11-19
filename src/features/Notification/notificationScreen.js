@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {View, Text} from 'react-native'
 import CustomHeader from '../../components/customHeader'
 import axios from 'axios'
-import LinearGradient from 'react-native-linear-gradient'
 
 class NotificationScreen extends Component {
     constructor(props) {
@@ -41,12 +40,12 @@ class NotificationScreen extends Component {
             )
         }
         return (
-            <LinearGradient style={{flex: 1}} colors={["#FA8100", "#E57600", "#CD6A00"]}>
+            <View style={{flex: 1}}>
             <View>
                 <CustomHeader title="Notification" isHome={false} navigation={navigation} routeName="ProfileScreen" />
                 {shows}
             </View>
-            </LinearGradient>
+            </View>
         )
     }
 }

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {View, Text, StyleSheet} from 'react-native'
 import CustomHeader from '../../components/customHeader'
 import axios from 'axios'
-import LinearGradient from 'react-native-linear-gradient'
 
 class MyOrdersScreen extends Component {
     constructor(props) {
@@ -38,12 +37,12 @@ class MyOrdersScreen extends Component {
             )
         }
         return (
-            <LinearGradient style={{flex: 1}} colors={["#FA8100", "#E57600", "#CD6A00"]}>
+            <View style={{flex: 1}} colors={["#FA8100", "#E57600", "#CD6A00"]}>
             <View>
                 <CustomHeader title="Myorders" isHome={false} navigation={navigation} routeName="ProfileScreen" />
                 {shows}
             </View>
-            </LinearGradient>
+            </View>
         )
     }
 }

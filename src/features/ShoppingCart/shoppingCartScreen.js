@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, Button, StyleSheet, Image, FlatList } from 'react-native'
 import CustomHeader from '../../components/customHeader'
-import LinearGradient from 'react-native-linear-gradient'
-import CustomButton from '../../components/customButton'
 import ShoppingCartCard from './shoppingCartCard'
 import ShoppingCartButton from './shoppingCartButton'
 
@@ -24,7 +22,7 @@ class ShoppingCart extends Component {
         );
 
         return (
-            <LinearGradient colors={["#FA8100", "#B2590B", "#6C3315"]} style={{ flex: 1 }}>
+            <View style={{ flex: 1 }}>
                 <CustomHeader title="" navigation={navigation} routeName="MenuScreen" />
                 <View style={styles.deliveryContainer}>
                     <View style={{ flexDirection: 'row' }}>
@@ -53,7 +51,7 @@ class ShoppingCart extends Component {
                         fontStyle={styles.fontCheckOutButton} breadName={route.params.title} breadPrice={route.params.price} user={route.params.user}/>
                     </View>
                 </View>
-            </LinearGradient>
+            </View>
         )
     }
 }
