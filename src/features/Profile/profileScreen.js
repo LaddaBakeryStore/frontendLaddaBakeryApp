@@ -25,7 +25,9 @@ class ProfileScreen extends Component {
                     </View>
                 </LinearGradient>
                 <View style={{ flex: 0.5, backgroundColor: '#fff', justifyContent: 'space-evenly'}}>
-                    <Button title="Notification" onPress={() => navigation.navigate("NotificationScreen")} />
+                    <Button title="Notification" onPress={() => navigation.navigate("NotificationScreen", {
+                        user: route.params.user
+                    })} />
                     <Button title="Orders" onPress={() => navigation.navigate("MyOrdersScreen", {
                         user: route.params.user
                     })} />

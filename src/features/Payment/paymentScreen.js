@@ -41,7 +41,7 @@ class PaymentScreen extends Component {
         const order = {
             orderNo: this.state.orders.length,
             orderName: this.props.route.params.user.fullName,
-            orderTotalPrice: "",
+            orderTotalPrice: this.props.route.params.price,
             orderAddress: this.props.route.params.user.address,
             orderTime: orderTime,
             orderStatus: "prepare",
@@ -68,16 +68,20 @@ class PaymentScreen extends Component {
               this.setState({bills: bills})
         })
 
+        const billTime = (date.getHours() + 1) + "/" + date.getMinutes() + "/" + date.getSeconds();
+        const billDate = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+
         const bill = {
-            billNo: "",
-            billAddress: "",
-            billStatus: "",
-            billTotalPrice: "",
-            billDate: "", 
-            billTime: "", 
-            senderName: "",
-            recipientName: "", 
-            paymentMethod: "",
+            billNo: this.state.bills.length,
+            billAddress: this.props.route.params.user.address,
+            billStatus: "Done",
+            billTotalPrice: this.props.route.params.price + 30,
+            billDate: billDate, 
+            billTime: billTime, 
+            senderName: "ladda",
+            recipientName: this.props.route.params.user.fullName, 
+            paymentMethod: "Cash on delivery",
+            billOrderNo: this.state.orders.length,
         }
         const url_port_bill = "http://192.168.1.46:8085/api/bill/?" + "billNo=" + bill.billNo +
                                                             "&billAddress=" + bill.billAddress +
@@ -87,7 +91,8 @@ class PaymentScreen extends Component {
                                                             "&billTime=" + bill.billTime +
                                                             "&senderName=" + bill.senderName +
                                                             "&recipientName=" + bill.recipientName +
-                                                            "&paymentMethod=" + bill.paymentMethod;
+                                                            "&paymentMethod=" + bill.paymentMethod +
+                                                            "&billOrderNo=" + bill.billOrderNo;
         axios.post(url_port_bill)
            .then(res => {    
             console.log(res.data)
