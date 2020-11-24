@@ -14,7 +14,7 @@ class NotificationScreen extends Component {
 
     async componentDidMount() {
         const recipientName = this.props.route.params.user.fullName;
-        await axios.get('https://ladda-bakery-store.herokuapp.com//api/bill/' + recipientName)
+        await axios.get('https://ladda-bakery-store.herokuapp.com/api/bill/' + recipientName)
           .then(res => {
             const bills = res.data;
             this.setState({ bills: bills });    

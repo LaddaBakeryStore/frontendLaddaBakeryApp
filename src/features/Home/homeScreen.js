@@ -88,7 +88,7 @@ class HomeScreen extends Component {
     );
     return (
       <SafeAreaView style={styles.container}>
-        <View>
+        <View style={{backgroundColor: "#D76529"}}>
           <CustomHeader title="Home" isHome={true} navigation={navigation} isMenu={true} isLogin={route.params.status} user={route.params.person}/>
         </View>
         <FlatList

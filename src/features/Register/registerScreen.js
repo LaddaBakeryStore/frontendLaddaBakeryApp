@@ -31,7 +31,7 @@ class RegisterScreen extends Component{
             address: this.state.address,
             moreDetail: this.state.moreDetail,
         };
-        const url = 'https://ladda-bakery-store.herokuapp.com//api/laddaBakery/registerAccount?' + 'fullName='+ user.fullName 
+        const url = 'https://ladda-bakery-store.herokuapp.com/api/laddaBakery/registerAccount?' + 'fullName='+ user.fullName 
                                                                             + '&userName=' + user.userName 
                                                                             + '&password=' + user.password
                                                                             + '&email=' + user.email

@@ -15,7 +15,7 @@ class CustomHeader extends Component{
     render() {
         const {title, isHome, navigation, routeName, isMenu, isLogin, isLoginPage, user} = this.props
         return (
-            <View style={{flexDirection: 'row', height: 50}}>
+            <View style={{flexDirection: 'row', height: 50, backgroundColor: "#D76529"}}>
                 {
                     (isHome && isMenu) ? 
                         <View style={{flex: 1, justifyContent: 'center'}}>
