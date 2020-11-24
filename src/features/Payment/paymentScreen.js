@@ -24,7 +24,7 @@ class PaymentScreen extends Component {
     async handleSubmitConfirmButton(event) {
         event.preventDefault();
         this.setState({ visible: true });
-        const url = 'http://192.168.1.46:8085/api/order'
+        const url = 'https://ladda-bakery-store.herokuapp.com//api/order'
         await axios.get(url)
           .then(res => {
               const orders = res.data;
@@ -46,7 +46,7 @@ class PaymentScreen extends Component {
             orderDate: orderDate,
             deliveryFee: "30"
         }
-        const url_post = 'http://192.168.1.46:8085/api/order?' + "orderNo=" + order.orderNo +
+        const url_post = 'https://ladda-bakery-store.herokuapp.com//api/order?' + "orderNo=" + order.orderNo +
                                                         "&orderName="+ order.orderName +
                                                         "&orderTotalPrice="+ order.orderTotalPrice +
                                                         "&orderAddress="+ order.orderAddress +
@@ -59,7 +59,7 @@ class PaymentScreen extends Component {
               console.log(res.data)
         })
 
-        const url_bill = 'http://192.168.1.46:8085/api/bill'
+        const url_bill = 'https://ladda-bakery-store.herokuapp.com//api/bill'
         await axios.get(url_bill)
           .then(res => {
               const bills = res.data;
@@ -81,7 +81,7 @@ class PaymentScreen extends Component {
             paymentMethod: "Cash on delivery",
             billOrderNo: this.state.orders.length,
         }
-        const url_port_bill = "http://192.168.1.46:8085/api/bill/?" + "billNo=" + bill.billNo +
+        const url_port_bill = "https://ladda-bakery-store.herokuapp.com//api/bill/?" + "billNo=" + bill.billNo +
                                                             "&billAddress=" + bill.billAddress +
                                                             "&billStatus=" + bill.billStatus +
                                                             "&billTotalPrice=" + bill.billTotalPrice +

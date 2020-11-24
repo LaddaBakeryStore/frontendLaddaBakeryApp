@@ -14,7 +14,7 @@ class MyOrdersScreen extends Component {
 
     async componentDidMount() {
         const orderName = this.props.route.params.user.fullName;
-        await axios.get('http://192.168.1.46:8085/api/order/' + orderName)
+        await axios.get('https://ladda-bakery-store.herokuapp.com//api/order/' + orderName)
           .then(res => {
             const orders = res.data;
             this.setState({ orders: orders });    

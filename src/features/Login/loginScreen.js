@@ -25,7 +25,7 @@ class LoginScreen extends Component {
             userName: this.state.userName,
             password: this.state.password,
         };
-        const url = 'http://192.168.1.46:8085/api/laddaBakery/loginAccount?' + '&userName=' + user.userName 
+        const url = 'https://ladda-bakery-store.herokuapp.com//api/laddaBakery/loginAccount?' + '&userName=' + user.userName 
                                                                             + '&password=' + user.password                                                           
         axios.post(url)
           .then(res => {
