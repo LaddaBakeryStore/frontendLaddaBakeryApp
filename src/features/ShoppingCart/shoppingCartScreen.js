@@ -14,6 +14,9 @@ const DATA = [
 class ShoppingCart extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            quality: 1,
+        }
     }
     render() {
         const { navigation, route} = this.props
@@ -35,7 +38,7 @@ class ShoppingCart extends Component {
                         <Text style={styles.addressLine}>{route.params.user.address}</Text>
                     </View>
                 </View>
-                <View style={{ flex: 2 }}>
+                <View style={{ flex: 1 }}>
                     <FlatList
                         data={DATA}
                         renderItem={renderItem}
@@ -44,11 +47,15 @@ class ShoppingCart extends Component {
                 </View>
                 <View style={{ flex: 1 }}>
                     <View style={{ flex: 2.5, backgroundColor: '#8B380D'}}>
-                    
+                        <Button title="1 ชิ้น" onPress={() => this.setState({quality: 1})}/>
+                        <Button title="2 ชิ้น"  onPress={() => this.setState({quality: 2})}/>
+                        <Button title="5 ชิ้น"  onPress={() => this.setState({quality: 5})}/>
+                        <Button title="10 ชิ้น"  onPress={() => this.setState({quality: 10})}/>
                     </View>
                     <View style={styles.footer}>
                         <ShoppingCartButton title="CHECKOUT" navigation={navigation} routeName="PaymentScreen" style={styles.checkOutButton} 
-                        fontStyle={styles.fontCheckOutButton} breadName={route.params.title} breadPrice={route.params.price} user={route.params.user}/>
+                        fontStyle={styles.fontCheckOutButton} breadName={route.params.title} breadPrice={route.params.price} user={route.params.user}
+                        breadQuality={this.state.quality}/>
                     </View>
                 </View>
             </View>

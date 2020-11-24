@@ -39,7 +39,7 @@ class PaymentScreen extends Component {
         const order = {
             orderNo: this.state.orders.length,
             orderName: this.props.route.params.user.fullName,
-            orderTotalPrice: this.props.route.params.price,
+            orderTotalPrice: this.props.route.params.price*this.props.route.params.quality,
             orderAddress: this.props.route.params.user.address,
             orderTime: orderTime,
             orderStatus: "รอการชำระเงิน",
@@ -59,6 +59,25 @@ class PaymentScreen extends Component {
               console.log(res.data)
         })
 
+        // api item
+        const item = {
+            itemNo: this.state.orders.length,
+            itemName: this.props.route.params.bread,
+            itemQuality: this.props.route.params.quality*1,
+            itemPrice: this.props.route.params.price,
+        }
+
+        const url_item = 'https://ladda-bakery-store.herokuapp.com/api/item' + '?itemNo=' + item.itemNo 
+                                                                            +'&itemPrice=' + item.itemPrice
+                                                                            + '&itemQuality=' + item.itemQuality
+                                                                            + '&itemName=' + item.itemName
+        axios.post(url_item)
+        .then(res => {    
+            console.log(res.data)
+        })
+
+
+        // api bill
         const url_bill = 'https://ladda-bakery-store.herokuapp.com/api/bill'
         await axios.get(url_bill)
           .then(res => {
@@ -78,7 +97,7 @@ class PaymentScreen extends Component {
             billTime: billTime, 
             senderName: "ladda",
             recipientName: this.props.route.params.user.fullName, 
-            paymentMethod: "Cash on delivery",
+            paymentMethod: "Moblie Banking",
             billOrderNo: this.state.orders.length,
         }
         const url_port_bill = "https://ladda-bakery-store.herokuapp.com/api/bill/?" + "billNo=" + bill.billNo +
@@ -100,7 +119,7 @@ class PaymentScreen extends Component {
     render() {
         const { navigation, route } = this.props
         const { visible } = this.state
-        
+        console.log(this.props.route.params.price*route.params.quality)
         return (
             <View style={{ flex: 1 }}>
                 <View style={{ flex: 1 }}>
@@ -109,8 +128,6 @@ class PaymentScreen extends Component {
                 <View style={{ flex: 7 }}>
                     <Text style={{ margin: 15, fontWeight: 'bold', fontSize: 22 }}>{route.params.bread}</Text>
                     <PaymentCard message="Moblie Banking" image={require('../../assets/bank.png')} />
-                    <PaymentCard message="Credit/Debit card" image={require('../../assets/credit.png')} />
-                    <PaymentCard message="Cash on Delivery" image={require('../../assets/delivery.png')} />
                 </View>
                 <View style={{ flex: 1, flexDirection: 'column-reverse' }}>
                     <View style={styles.confirmButtonContainer}>

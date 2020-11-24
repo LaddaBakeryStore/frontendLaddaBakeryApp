@@ -11,7 +11,7 @@ class ShoppingCartButton extends Component {
         super(props);
     }
     render() {
-        const { title ,navigation, routeName, style, fontStyle, breadName, breadPrice, user} = this.props;
+        const { title ,navigation, routeName, style, fontStyle, breadName, breadPrice, user, breadQuality} = this.props;
         const customStyles = StyleSheet.flatten([style]);
         const fontStyles = StyleSheet.flatten([fontStyle]);
         return (
@@ -19,6 +19,7 @@ class ShoppingCartButton extends Component {
                 bread: breadName,
                 price: breadPrice,
                 user: user,
+                quality: breadQuality,
             } )}>
                 <Text style={fontStyles}>
                     { title }
