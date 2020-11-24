@@ -74,7 +74,7 @@ class PaymentScreen extends Component {
         const bill = {
             billNo: this.state.bills.length,
             billAddress: this.props.route.params.user.address,
-            billStatus: "Done",
+            billStatus: "เตรียมจัดส่ง",
             billTotalPrice: this.props.route.params.price + 30,
             billDate: billDate, 
             billTime: billTime, 
